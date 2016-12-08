@@ -22,10 +22,15 @@ H = hashlib.sha256();
 
 #Algorithm
 c1 = prg.randrange(p-1)+1;
-#m1 = pow(g,c1)%p; #Need to implement fast modular exponentiation
+print(c1);
+m1 = pow(g,c1,p);
+print(m1); 
 t = prg.randrange(2);
-z = 3; #pow(g,((c1-W*t)%(p-1)))*pow(Y,((-a*c1-b)%(p-1))); #Need to implement fast modular exponentiation\
+print(t);
+z = pow(g,((c1-W*t)%(p-1)),p)*pow(Y,((-a*c1-b)%(p-1)),p);
+print(z);
 H.update(b'ttt');
-c2 = H.hexdigest();
-#m2 = pow(g, c2)%p;
+c2 = H.hexdigest(); #get hash from int to int
 print(c2);
+m2 = pow(g, c2,p);
+print(m2);
