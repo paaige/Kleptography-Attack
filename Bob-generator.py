@@ -31,6 +31,6 @@ z = pow(g,((c1-W*t)%(p-1)),p)*pow(Y,((-a*c1-b)%(p-1)),p);
 print(z);
 H.update(b'ttt');
 c2 = H.hexdigest(); #get hash from int to int
-print(c2);
-m2 = pow(g, c2,p);
+print c2
+m2 = pow(g, int(c2, 16),p);
 print(m2);
