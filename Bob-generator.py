@@ -19,18 +19,23 @@ Y = 1;
 #Get assistive functions
 prg = random.SystemRandom();
 H = hashlib.sha256();
-
+print "Public:"
+print "--------------------------------------------------"
+print "Prime p: ",p
+print "--------------------------------------------------"
+print "Generator g: ",g
+print "--------------------------------------------------"
 #Algorithm
 c1 = prg.randrange(p-1)+1;
-print(c1);
 m1 = pow(g,c1,p);
-print(m1); 
-t = prg.randrange(2);
-print(t);
+print "to be later outputted to a file (so attacker can intercept): "
+print "Message m1 is: ",m1
+t = prg.randrange(2); #this is 0.. ?
 z = pow(g,((c1-W*t)%(p-1)),p)*pow(Y,((-a*c1-b)%(p-1)),p);
-print(z);
 H.update(b'ttt');
 c2 = H.hexdigest(); #get hash from int to int
-print c2
 m2 = pow(g, int(c2, 16),p);
-print(m2);
+print "--------------------------------------------------"
+print "Message m2 is :", m2
+print "--------------------------------------------------"
+
