@@ -9,19 +9,14 @@
 
 import sys
 import os
+from protocol import get_gen, gen_prime, get_exp
 from random import SystemRandom
 
-if len(sys.argv) < 2:
+'''if len(sys.argv) < 2:
     sys.exit("Please enter a file name")
-
-# open file containing prime number and generator
-try:
-    f = open(sys.argv[1], 'r')
-except:
-    sys.exit(sys.argv[1] + " does not exist")
-
-generator = f.readline()
-prime = f.readline()
+'''
+generator = get_gen()
+prime = get_prime()
 
 # find private and public key
 find_num = SystemRandom()
