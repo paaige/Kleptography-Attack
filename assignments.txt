@@ -1,0 +1,8 @@
+To-Do:
+- Code:
+  - Protocol (pf)
+  - Bias removal (rg)
+- Paper:
+  - Analyze RSA (rg)
+  - Summarize algorithm ()
+  - Discuss constants ()
