@@ -3,7 +3,8 @@
 import math
 import random
 import hashlib
-from prime_generator import *
+import prime_generator
+from Mallory import get_constants
 
 def device_protocol():
 
@@ -17,7 +18,8 @@ def device_protocol():
 		self.W = 3 # or 1 or something.. we can test different values
 		self.Y = 1 #public key
 		self.prev_key = -1;
-		
+		self.a, self.b, self.W = get_constants()
+
 	def get_new_keys():
 		if self.prev_key < 0:
 			c = prg.randrange(p-1)+1;
