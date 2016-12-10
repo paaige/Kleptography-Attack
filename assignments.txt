@@ -2,6 +2,8 @@ To-Do:
 - Code:
   - Protocol (pf)
   - Bias removal (rg)
+  - Alice ()
+  - Bob ()
 - Paper:
   - Analyze RSA (rg)
   - Summarize algorithm ()
