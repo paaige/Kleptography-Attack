@@ -6,3 +6,5 @@ To-Do:
   - Analyze RSA (rg)
   - Summarize algorithm ()
   - Discuss constants ()
+  - Context ()
+  - Analysis of implementation ()
