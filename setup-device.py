@@ -3,7 +3,7 @@
 import math
 import random
 import hashlib
-import prime-generator
+from prime_generator import *
 
 def device_protocol():
 
