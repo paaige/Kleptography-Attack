@@ -1,47 +1,39 @@
-#This is where the protocol will play out, we will call all relevant functions here and simulate Alice/Bob communication and attacker interception in this script
+# This generates a random public and private key for Alice. Note that this
+# will also be used to generate a random public and private key for the
+# attacker.
 
-import math
-import random
-import hashlib
+# This program takes a file containing a prime p and a generator g as input
+# Outputs a private key and a public key for Alice into a file
+# "Alice-key.txt". It will output a file "attacker-key.txt" if
+# "Alice-key.txt" already exists.
 
-def device_protocol():
+import sys
+import os
+from protocol import get_gen, gen_prime, get_exp
+from random import SystemRandom
 
-	def __init__(self):
-		self.p = 0xFFFFFFFFFFFFFFFFC90FDAA22168C234C4C6628B80DC1CD129024E088A67CC74020BBEA63B139B22514A08798E3404DDEF9519B3CD3A431B302B0A6DF25F14374FE1356D6D51C245E485B576625E7EC6F44C42E9A637ED6B0BFF5CB6F406B7EDEE386BFB5A899FA5AE9F24117C4B1FE649286651ECE45B3DC2007CB8A163BF0598DA48361C55D39A69163FA8FD24CF5F83655D23DCA3AD961C62F356208552BB9ED529077096966D670C354E4ABC9804F1746C08CA18217C32905E462E36CE3BE39E772C180E86039B2783A2EC07A28FB5C55DF06F4C52C9DE2BCBF6955817183995497CEA956AE515D2261898FA051015728E5A8AACAA68FFFFFFFFFFFFFFFF
-		self.g = 2
-		#device chooses the exponents
-		self.a = 1
-		self.b = 1
-		print "--------------------------------------------------"
-		print "Public large prime p ",p, " and generator ",g, " generated."
-		print "--------------------------------------------------"
-		self.H = hashlib.sha256()
-		print "Using Hash algorithm SHA256..."
-		print "--------------------------------------------------"	
-		self.prg = random.SystemRandom()
-		self.t = prg.randrange(2)
-		self.W = 3 # or 1 or something.. we can test different values
-		self.Y = 1 #public key
+'''if len(sys.argv) < 2:
+    sys.exit("Please enter a file name")
+'''
+generator = get_gen()
+prime = get_prime()
 
-	def get_generator():
-		return 2
+# find private and public key
+find_num = SystemRandom()
+private_key = find_num.randrange(int(prime))
+public_key = pow(int(generator), private_key) % int(prime)
 
-	def get_alice_exp():
-		return a
+# Alice-key.txt does exist -- create attacker-key.txt
+try:
+    alice = open("Alice-key.txt", 'r')
 
-	def get_bob_exp():
-		return b
+# Alice-key.txt does not exist -- create it
+except:
+    alice = open("Alice-key.txt", 'w')
+    alice.write(str(private_key)+'\n')
+    alice.write(str(public_key))
+    sys.exit()
 
-	def encrypt(self, usage_number):
-		if usage_number == 1:
-				self.c1 = prg.randrange(p-1)+1
-				m = pow(g, c1, p) #m1
-		else:
-				m = 1
-				self.z = pow(g,c1-W*t,p)*pow(Y,-a*c1-b, p)
-				#self.H.update("stuff")
-				#self.c2 = H.hexdigest();
-				#^placeholder until H is fixed
-				#m = pow(g, int(c2, 16), p)
-		return m
-
+attacker = open("attacker-key.txt", 'w')
+attacker.write(str(private_key)+'\n')
+attacker.write(str(public_key))
