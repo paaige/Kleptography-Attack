@@ -38,7 +38,7 @@ def device_protocol():
 				m = pow(g, c1, p) #m1
 		else:
 				m = 1
-				self.z = pow(g, ((c1-W*t)%(p-1)),p)*pow(Y, ((-a*c1-b)%(p-1), p)
+				self.z = pow(g,c1-W*t,p)*pow(Y,-a*c1-b, p)
 				#self.H.update("stuff")
 				#self.c2 = H.hexdigest();
 				#^placeholder until H is fixed
