@@ -31,3 +31,4 @@ t = prg.randrange(2); #this is 0.. ?
 	print "Sending message 2: m2 is :", m2
 	print "--------------------------------------------------"
 	return c1, m1, t, z, c2, m2
+#Hello can you read this?
