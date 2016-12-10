@@ -22,7 +22,19 @@ def device_protocol():
 		self.t = prg.randrange(2)
 		self.W = 3 # or 1 or something.. we can test different values
 		self.Y = 1 #public key
+		
+	def get_new_keys():
+		t = prg.randrange(2); #this is 0.. ?
+		z = pow(g,((c1-W*t)%(p-1)),p)*pow(Y,((-a*c1-b)%(p-1)),p);
+		H.update(b'ttt');
+		c2 = H.hexdigest(); #get hash from int to int
+		m2 = pow(g, int(c2, 16),p);
+		print "--------------------------------------------------"
+		print "Sending message 2: m2 is :", m2
+		print "--------------------------------------------------"
+		return c1, m1, t, z, c2, m2
 
+	
 	def get_generator():
 		return 2
 
