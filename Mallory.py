@@ -1,8 +1,12 @@
 # This program simulates the attack on the Discrete Log Attack
 import sys
-from Bob-generator.py import *
 #intercept m1, m2 from file, a, b publically known
 #make class where p,g member vars, add hash
+def get_constants():
+	a = 1
+	b = 1
+	W = 3
+	return a, b, W
 
 def gen_attack_vars(a, b, g, p):
 	#get m1 from file
@@ -11,6 +15,6 @@ def gen_attack_vars(a, b, g, p):
 	#get m2 from file
 	#if m2 == pow(g,
 	#		c2 = H(z1)
-	#elif m2 == pow(g, ......
+	#elif m2 == pow(g,).
 	#		c2 = H(z2)
-
+	return 
