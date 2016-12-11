@@ -7,14 +7,15 @@ from prime_generator import *
 class Alice:
 
     def __init__(self):
-        self.keys = get_keys()
+        self.s = secure_device();
+        self.keys = self.s.get_keys()
         self.private_key = self.keys[0]
         self.public_key = self.keys[1]
         self.shared_key = 0
         self.prime = get_prime()
 
     def set_new_key(self):
-        self.keys = get_keys()
+        self.keys = self.s.get_keys()
         self.private_key = self.keys[0]
         self.public_key = self.keys[1]
 

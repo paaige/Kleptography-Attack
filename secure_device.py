@@ -5,12 +5,15 @@ import os
 from prime_generator import *
 from random import SystemRandom
 
-generator = get_generator()
-prime = get_prime()
+class secure_device:
 
-def get_keys():
-    find_num = SystemRandom()
-    private_key = find_num.randrange(prime)
+    def __init__(self):
+        self.generator = get_generator()
+        self.prime = get_prime()
 
-    public_key = pow(generator, private_key, prime)
-    return private_key, public_key
+    def get_keys(self):
+        find_num = SystemRandom()
+        self.private_key = find_num.randrange(self.prime)
+
+        self.public_key = pow(self.generator, self.private_key, self.prime)
+        return self.private_key, self.public_key
