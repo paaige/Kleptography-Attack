@@ -1,5 +1,6 @@
 # This program simulates the attack on the Discrete Log Attack
 import sys
+from secure_device import *
 #intercept m1, m2 from file, a, b publically known
 #make class where p,g member vars, add hash
 class Mallory:
@@ -8,7 +9,12 @@ class Mallory:
 		self.a = 1
 		self.b = 1
 		self.W = 3
-	
+
+                s = secure_device()
+                self.keys = s.get_keys()
+                self.private_key = self.keys[0]
+                self.public_key = self.keys[1]
+
 	def get_constants(self):
 		return self.a, self.b, self.W
 
