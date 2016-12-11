@@ -7,8 +7,7 @@ from prime_generator import *
 class Bob:
 
     def __init__(self):
-        self.setup = setup_device()
-        self.keys = self.setup.get_new_keys()
+        self.keys = get_new_keys()
         self.private_key = self.keys[0]
         self.public_key = self.keys[1]
         self.shared_key = 0

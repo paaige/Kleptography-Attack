@@ -11,7 +11,7 @@ class Mallory:
 	
 	def get_constants(self):
 		return self.a, self.b, self.W
-		
+
 	def gen_attack_vars(a, b, g, p):
 		#get m1 from file
 		#r = pow(m1,a) * pow(g,b,p)
@@ -22,3 +22,5 @@ class Mallory:
 		#elif m2 == pow(g,).
 		#		c2 = H(z2)
 		return 
+
+

@@ -4,7 +4,6 @@ import math
 import random
 import hashlib
 from prime_generator import *
-from Mallory import get_constants
 
 generator = get_generator();
 prime = get_prime();
@@ -17,9 +16,8 @@ prg = random.SystemRandom()
 W = 3 # or 1 or something.. we can test different values
 Y = 1 #public key
 prev_key = -1;
-a, b, W = get_constants()
 
-def get_new_keys():
+def get_new_keys(a, b, W):
     if prev_key < 0:
             c = prg.randrange(p-1)+1;
             prev_key = c;
