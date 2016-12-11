@@ -6,41 +6,32 @@ import hashlib
 from prime_generator import *
 from Mallory import get_constants
 
-class setup_device():
+generator = get_generator();
+prime = get_prime();
 
-	def __init__(self):
-		self.p = get_prime();
-		self.g = get_generator();
-		print "--------------------------------------------------"
-		print "Public large prime p ",self.p, " and generator ", self.g, " generated."
-		print "--------------------------------------------------"
-		self.prg = random.SystemRandom()
-		self.W = 3 # or 1 or something.. we can test different values
-		self.Y = 1 #public key
-		self.prev_key = -1;
-		self.a, self.b, self.W = get_constants()
+print "--------------------------------------------------"
+print "Public large prime p ", prime, " and generator ", generator, " generated."
+print "--------------------------------------------------"
 
-	def get_new_keys():
-		if self.prev_key < 0:
-			c = prg.randrange(p-1)+1;
-			self.prev_key = c;
-			m = pow(g,c1,p);
-			return c,m
-		else:
-			c1 = self.prev_key
-			t = prg.randrange(2);
-			z = pow(g,((c1-W*t)%(p-1)),p)*pow(Y,((-a*c1-b)%(p-1)),p);
-			H = hashlib.sha256()
-			H.update(bytes(str(z),'ascii'));
-			c = H.hexdigest();
-			self.prev_key = c;
-			m = pow(g, int(c, 16),p);
-			return c, m
+prg = random.SystemRandom()
+W = 3 # or 1 or something.. we can test different values
+Y = 1 #public key
+prev_key = -1;
+a, b, W = get_constants()
 
-	
-	def get_generator():
-		return self.g
-
-	def get_prime():
-		return self.p
-
+def get_new_keys():
+    if prev_key < 0:
+            c = prg.randrange(p-1)+1;
+            prev_key = c;
+            m = pow(generator,c1,prime);
+            return c,m
+    else:
+            c1 = prev_key
+            t = prg.randrange(2);
+            z = pow(generator,((c1-W*t)%(prime-1)),prime)*pow(Y,((-a*c1-b)%(prime-1)),prime);
+            H = hashlib.sha256()
+            H.update(bytes(str(z),'ascii'));
+            c = H.hexdigest();
+            prev_key = c;
+            m = pow(generator, int(c, 16),prime);
+            return c, m
