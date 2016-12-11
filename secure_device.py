@@ -1,7 +1,5 @@
 # Generates a private and public key. Will be used for Mallory.py and Alice.py
 
-import sys
-import os
 from prime_generator import *
 from random import SystemRandom
 

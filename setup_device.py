@@ -4,22 +4,19 @@ import math
 import random
 import hashlib
 from prime_generator import *
-from Mallory import *
 
 class setup_device:
 	
-	def __init__(self):
+	def __init__(self,attacker):
             self.generator = get_generator()
             self.prime = get_prime()
             
-            Mal = Mallory()
-
-            self.Y = Mal.public_key
+            self.Y = attacker.get_public_key()
             self.prev_key = -1
-            self.a, self.b, self.W = Mal.get_constants()
+            self.a, self.b, self.W = attacker.get_constants()
             self.prg = random.SystemRandom()
 
-	def get_new_keys(self):
+	def get_keys(self):
 	    if self.prev_key < 0:
 	            self.c = self.prg.randrange(self.prime-1)+1;
 	            self.prev_key = self.c;
