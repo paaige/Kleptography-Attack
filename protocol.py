@@ -6,8 +6,6 @@ from Bob import *
 
 def main():
 	alice = Alice()
-	mal = Mallory()
-	a,b, W = mal.get_constants()
 	bob = Bob()
 	
 	#Alice generates keys, sends public key to Bob over public channel
