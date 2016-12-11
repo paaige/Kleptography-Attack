@@ -1,15 +1,12 @@
 # Diffie-Hellman user will get his/her private and public keys using a devicedevice
 # and send the public key to other user
 
-from setup_device import *
-from prime_generator import *
-
 class User:
 
     def __init__(self):
-        self.private_key = self.keys[0]
-        self.public_key = self.keys[1]
-        self.shared_key = 0
+        self.private_key = 0
+        self.public_key = 1
+        self.shared_key = 1
 
     def set_new_key(self,device):
         self.private_key, self.public_key = device.get_new_keys()
