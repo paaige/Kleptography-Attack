@@ -7,16 +7,18 @@ from prime_generator import *
 class Bob:
 
     def __init__(self):
-        self.keys = get_new_keys()
-        self.private_key = self.keys[0]
-        self.public_key = self.keys[1]
-        self.shared_key = 0
-        self.prime = get_prime()
+				setup = setup_device()
+				self.keys = setup.get_new_keys()
+				self.private_key = self.keys[0]
+				self.public_key = self.keys[1]
+				self.shared_key = 0
+				self.prime = get_prime()
 
     def set_new_key(self):
-        self.keys = self.get_new_keys()
-        self.private_key = self.keys[0]
-        self.public_key = self.keys[1]
+				setup = setup_device()
+				self.keys = setup.get_new_keys()
+				self.private_key  = self.keys[0]
+				self.public_key = self.keys[1]
 
     def get_public_key(self):
         return self.public_key
