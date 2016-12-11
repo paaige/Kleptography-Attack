@@ -1,12 +1,12 @@
 #This is where the protocol will play out, we will call all relevant functions here and simulate Alice/Bob communication and attacker interception in this script
 
-from Mallory import *
-from Alice import *
-from Bob import *
+from Attacker import *
+from User import *
 
 def main():
-	alice = Alice()
-	bob = Bob()
+    Alice = User()
+    Bob = User()
+    Mallory = Attacker(0,1,3)
 	
 	#Alice generates keys, sends public key to Bob over public channel
 	#Bob generates keys, sends public key to Alice over public channel
