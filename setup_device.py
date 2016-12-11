@@ -3,16 +3,16 @@
 import math
 import random
 import hashlib
-import prime_generator
+from prime_generator import *
 from Mallory import get_constants
 
-def device_protocol():
+class setup_device():
 
 	def __init__(self):
 		self.p = get_prime();
 		self.g = get_generator();
 		print "--------------------------------------------------"
-		print "Public large prime p ",p, " and generator ",g, " generated."
+		print "Public large prime p ",self.p, " and generator ", self.g, " generated."
 		print "--------------------------------------------------"
 		self.prg = random.SystemRandom()
 		self.W = 3 # or 1 or something.. we can test different values
