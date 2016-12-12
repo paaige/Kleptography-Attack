@@ -9,7 +9,7 @@ class User:
         self.shared_key = 1
 
     def set_new_key(self,device):
-        self.private_key, self.public_key = device.get_new_keys()
+        self.private_key, self.public_key = device.get_keys()
 
     def get_public_key(self):
         return self.public_key

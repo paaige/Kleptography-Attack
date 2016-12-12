@@ -1,5 +1,6 @@
 # This program simulates the attack on the Discrete Log Attack
 import sys
+import hashlib
 from secure_device import *
 class Attacker:
 
@@ -11,23 +12,30 @@ class Attacker:
         self.public_key = 1
 
     def get_constants(self):
-        return self.a, self.b, self.W, self.public_key
+        return self.a, self.b, self.W
 
     def set_new_key(self,device):
-        self.private_key, self.public_key = device.get_new_keys()
+        self.private_key, self.public_key = device.get_keys()
 
     def get_public_key(self):
         return self.public_key
 
-    def compute_key(m1,m2,g,p):
-        H = hashlib.sha256();
-        r = pow(m1,a,p)*pow(g,b,p);
-        z1 = m1*pow(r,-X,p);
-        if m2 == pow(g,H,z1):
-            return z1;
-        z2 = z1*pow(g,-W,p);
-        if m2 == pow(g,H,z2):
-            return z2;
+    def compute_key(self,m1,m2,g,p):
+        r = pow(m1,self.a,p)*pow(g,self.b,p)
+        z1 = m1*pow(r,((-self.private_key)%(p-1)),p)
+        h1 = hashlib.sha256()
+        h1.update(bytes(str(z1),'ascii'))
+        k1 = int(h1.hexdigest(),16)
+        if m2 == pow(g,k1,p):
+            return k1
+        z2 = z1*pow(g,((-self.W)%(p-1)),p)
+        h2 = hashlib.sha256()
+        h2.update(bytes(str(z2),'ascii'))
+        k2 = int(h2.hexdigest(),16)
+        if m2 == pow(g,k2,p):
+            return k2
+        else:
+            return -1
 
 
 

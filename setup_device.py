@@ -24,11 +24,11 @@ class setup_device:
             return self.c, self.m
         else:
             self.c1 = self.c
-            self.t = self.prg.randrange(2);
-            self.z = pow(self.generator,(self.c1-self.W*self.t),self.prime)*pow(self.Y,((-self.a*self.c1-self.b)%(self.prime-1)), self.prime);
+            t = self.prg.randrange(2);
+            z = pow(self.generator,((self.c1-self.W*t)%(self.prime-1)),self.prime)*pow(self.Y,((-self.a*self.c1-self.b)%(self.prime-1)), self.prime);
             H = hashlib.sha256()
             H.update(bytes(str(z),'ascii'));
-            self.c = H.hexdigest();
+            self.c = int(H.hexdigest(),16);
             self.prev_key = self.c;
-            self.m = pow(self.generator, int(self.c, 16), self.prime);
+            self.m = pow(self.generator, self.c, self.prime);
             return self.c, self.m
