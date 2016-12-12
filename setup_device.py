@@ -23,9 +23,9 @@ class setup_device:
             self.m = pow(self.generator, self.c, self.prime);
             return self.c, self.m
         else:
-            self.c1 = self.c
+            c1 = self.prev_key
             t = self.prg.randrange(2);
-            z = pow(self.generator,((self.c1-self.W*t)%(self.prime-1)),self.prime)*pow(self.Y,((-self.a*self.c1-self.b)%(self.prime-1)), self.prime);
+            z = (pow(self.generator,((c1-self.W*t)%(self.prime-1)),self.prime)*pow(self.Y,((-self.a*c1-self.b)%(self.prime-1)), self.prime))%self.prime;
             H = hashlib.sha256()
             H.update(bytes(str(z),'ascii'));
             self.c = int(H.hexdigest(),16);
