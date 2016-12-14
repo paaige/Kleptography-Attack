@@ -2,9 +2,7 @@
 
 ## Contributors:
 
-Jennifer Dailey
-Paige Frederick
-Rashmika Goswami
+Jennifer Dailey - Paige Frederick - Rashmika Goswami
 
 ## Overview:
 This an implementation of the Discrete Log based SETUP attack on Diffie-Hellman devised by Adam Young and Moti Yung in <a href="https://cryptome.org/2013/09/klepto-crypto.pdf">this paper</a>.
